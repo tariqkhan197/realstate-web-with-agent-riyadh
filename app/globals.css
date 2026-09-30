@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root { color-scheme: light; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-canvas text-ink antialiased; font-feature-settings: "ss01", "cv11"; }
+  html[dir="rtl"] body { font-family: var(--font-arabic), var(--font-manrope), system-ui, sans-serif; }
+  ::selection { background: #C7DDD2; color: #07261E; }
+  :focus-visible { outline: 2px solid #1A7355; outline-offset: 2px; border-radius: 6px; }
+  .num { font-variant-numeric: tabular-nums; }
+}
+
+@layer components {
+  .surface { @apply rounded-2xl border border-line bg-surface shadow-card; }
+  .hairline { @apply border-line; }
+  .field {
+    @apply h-11 w-full rounded-xl border border-line bg-white px-3.5 text-[15px] text-ink placeholder:text-ink-4
+      transition-colors hover:border-line-strong focus:border-palm-600 focus:outline-none focus:ring-4 focus:ring-palm-100;
+  }
+  .label { @apply mb-1.5 block text-[13px] font-semibold text-ink-2; }
+  .scrollbar-none { scrollbar-width: none; }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+  .range {
+    @apply h-1.5 w-full cursor-pointer appearance-none rounded-full bg-line;
+    accent-color: #145C45;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+}
